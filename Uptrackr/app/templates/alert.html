@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Alert
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if trial_message %}
+    <p style="color: green;">{{ message}}</p>
+    {% endif %}
+    <div class="section">
+            <h2 style="color: #1DCD8D; text-align: center;">How it works</h2>
+            <div style="width: 100%; text-align: center;">
+                <div style="display: inline-block; text-align: left; padding: 10px; border: 1px solid #ccc; border-radius: 10px;">
+                    <ol style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"> ☑️ Get Started by setting your customized job feed on Upwork</li>
+                        <li style="margin-bottom: 10px;">☑️ Copy your Upwork RSS URL</li>
+                        <li style="margin-bottom: 10px;">☑️ Enter your email to receive instant alerts</li>
+                        <li>☑️ Enter your Upwork RSS URL, Click on “Send me Alerts!” Button below and Viola!!!</li>
+                    </ol>
+                </div>
+                <h2>
+                    Watch explainer video below
+                    <video controls width="500" height="400" style="display: block; margin: 0 auto;">
+                        <source src="{% static 'videos/explainer_video.mp4' %}" type="video/mp4">
+                 
+                    </video>
+                </h2>
+            </div>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input class="btn send_alerts_btn" type="submit" value="Send Me Alerts">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        margin: 0 auto; /* Center the container horizontally */
+        max-width: 600px; /* Limit the maximum width of the container */
+        padding: 0 20px; /* Add padding to the container */
+    }
+
+    .section {
+        border: 1px solid #ccc; /* Fine line border */
+        border-radius: 20px; /* Smooth edges */
+        padding: 20px; /* Add padding */
+        margin-bottom: 20px; /* Add space between sections */
+        background-color: white; /* Section background color */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+    }
+
+    /* Style for form labels */
+    label {
+        display: block; /* Display each label on a new line */
+        margin-bottom: 5px; /* Add space between labels */
+        font-weight: bold; /* Make labels bold */
+    }
+
+    /* Style for form inputs */
+    input[type="email"],
+    input[type="url"] {
+        width: 95%; /* Set input width to fill the container */
+        padding: 10px; /* Add padding */
+        margin-bottom: 10px; /* Add space between inputs */
+        border-radius: 5px; /* Smooth edges */
+        border: 1px solid #ccc; /* Fine line border */
+    }
+
+    /* Style for submit button */
+    input[type="submit"] {
+        width: 100%; /* Set button width to fill the container */
+        padding: 10px; /* Add padding */
+        border-radius: 5px; /* Smooth edges */
+        background-color: #1DCD8D; /* Button background color */
+        color: white; /* Button text color */
+        border: none; /* Remove button border */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        transition: background-color 0.3s; /* Smooth transition for background color */
+    }
+
+    /* Hover effect for submit button */
+    input[type="submit"]:hover {
+        background-color: #17a17b; /* Darken background color on hover */
+    }
+
+    /* Style for forgot password link */
+    .forgot-password {
+        display: inline-block; /* Display as inline-block element */
+        margin-bottom: 10px; /* Add space below the link */
+
+    }
+
+    /* Hover effect for forgot password link */
+    .forgot-password:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+    /* Style for signup link */
+    .signup-link {
+        text-align: center; /* Center-align the link */
+        margin-top: 20px; /* Add space above the link */
+    }
+</style>
+{% endblock %}

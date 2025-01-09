@@ -1,0 +1,176 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
+    
+    <!-- Load favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'img/up_logoO.ico' %}"
+    />
+
+    <style>
+        /* base.html */
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Nunito', Arial, sans-serif;
+                background-color: #F4F4F4; /* Light grey background */
+            }
+
+            .header {
+                background-color: #F4F4F4; /* Same color as body background */
+                padding: 20px;
+     
+                display: flex; /* Use flexbox for layout */
+                align-items: center; /* Align items vertically */
+                justify-content: space-between; /* Align items horizontally with space between */
+            }
+
+            .footer {
+                background-color: #F4F4F4; /* Same color as body background */
+                padding: 20px;
+                border-top: 1px solid #ccc; /* Thin line at the top of footer */
+            }
+
+            .logo {
+                height: 50px; /* Set the height of the logo */
+                margin-right: 20px; /* Add margin to the right for logo */
+            }
+
+            .topnav {
+                overflow: hidden;
+                display: flex; /* Use flexbox for layout */
+                justify-content: center; /* Center items horizontally */
+                flex-grow: 1; /* Allow the navigation bar to grow to fill the remaining space */
+            }
+
+            .signup-button {
+                background-color: #1DCD8D; /* Set background color */
+                color: white; /* Set text color */
+                border: none; /* Remove border */
+                border-radius: 20px; /* Add rounded corners */
+                padding: 10px 20px; /* Add padding */
+                font-size: 17px; /* Set font size */
+                cursor: pointer; /* Add pointer cursor on hover */
+                font-family: 'Nunito', Arial, sans-serif; /* Set font family */
+                margin-right: 20px; /* Adjust margin for smaller screens */
+                font-weight: bold;
+                text-decoration: none; /* Remove underline */
+            }
+
+            .signup-button:hover {
+                background-color: #15a357; /* Darker background color on hover */
+          
+                
+            }
+
+            /* Style the links inside the navigation bar */
+            .topnav a {
+                color: #0e0d0d;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                font-weight: bold;
+            }
+
+            /* Change the color of links on hover */
+            .topnav a:hover {
+                background-color: #1DCD8D;
+                color: black;
+                border-radius: 5px;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                color: black;
+                border-radius: 5px;
+            }
+
+            /* Media query for smaller screens */
+            @media only screen and (max-width: 768px) {
+                .header {
+                    flex-direction: column; /* Stack items vertically on smaller screens */
+                    text-align: center; /* Center items vertically */
+                }
+
+                .signup-button {
+                    margin: 20px 0; /* Adjust margin for smaller screens */
+                    text-decoration: none; /* Remove underline */
+                }
+
+                .topnav {
+                    margin-top: 20px; /* Add margin to the top of the navigation bar */
+                }
+            }
+
+
+    </style>
+</head>
+<body>
+     <header class="header">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/up_logo.png' %}" alt="Your Logo" class="logo">
+        </a>
+            {% if user.is_authenticated %}
+            <div class="topnav">
+                <a href="{% url 'home' %}"> Home </a>
+                <a href="{% url 'pricing' %}">Pricing</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+                <a href="{% url 'dashboard' %}" class="signup-button">Dashboard</a>
+            {% else %}
+            <div class="topnav">
+                <a href="{% url 'home' %}"> Home </a>
+                <a class="active" href="javascript:void(0);" onclick="smoothScroll('how-it-works-section')">How it works</a>
+                <a href="{% url 'pricing' %}">Pricing</a>
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+                <a href="{% url 'signup' %}" class="signup-button">Sign up for free</a>
+            {% endif %}
+        </div>
+    </header>
+    
+    
+    
+
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer class="footer">
+
+    </footer>
+
+<script>
+    function smoothScroll(target) {
+        var element = document.getElementById(target);
+        var offset = 50; // Adjust this value as needed to offset the scrolling position
+        
+        if (element) {
+            window.scrollTo({
+                top: element.offsetTop - offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+</script>
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

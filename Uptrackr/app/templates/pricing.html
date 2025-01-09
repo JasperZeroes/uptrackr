@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Pricing Plans
+{% endblock %}
+
+{% block content %}
+
+<div class="container"  style="text-align: center;">
+    <div class="section">
+        <h2>Pricing Plans</h2>
+        {% if trial_message %}
+                <p style="color: red;">{{ trial_message | safe }}</p>
+            {% else %}
+                <div class="plan">
+                    <h3>Free Plan</h3>
+                    <p>This plan allows a 7 days free trial</p>
+                    <form action="{% url 'alert' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="plan" value="free">
+                        <input type="submit" class="start-now-button" value="Start Now">
+                    </form>
+                </div>
+            {% endif %}
+
+
+
+        <div class="plan">
+            <h3>Monthly Plan</h3>
+            <p>This plan allows you to receive Upwork job alerts for 30 days from subscription date</p>
+            <p>$5/month</p>
+            {% if month_sub_on %}
+                <p style="color: #1DCD8D;">Your Monthly subscription is active.</p>
+                <form action="{% url 'alert' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="display: inline-block; padding: 10px 20px; background-color: #1DCD8D; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; border: none;">Click here to access alert page</button>
+                </form>
+            {% elif sub_message %}
+                <p style="color: red;">{{ sub_message | safe }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="plan" value="monthly">
+                    <input type="submit" class="subscribe-button" value="Renew Subscription">
+                </form>
+            {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="plan" value="monthly">
+                <input type="submit" class="subscribe-button" value="Subscribe Now">
+            </form>
+            {% endif %}
+        </div>
+        
+        <div class="plan">
+            <h3>Yearly Plan</h3>
+            <p>This plan allows you to receive Upwork job alerts for 365 days from subscription date</p>
+            <p>$48/year (20% discount)</p>
+            {% if year_sub_on %}
+                <p style="color: #1DCD8D;">Your annual subscription is active.</p>
+                <form action="{% url 'alert' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="display: inline-block; padding: 10px 20px; background-color: #1DCD8D; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; border: none;">Click here to access alert page</button>
+                </form>
+            {% elif year_sub_message %}
+                <p style="color: red;">{{ year_sub_message | safe }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="plan" value="annual">
+                    <input type="submit" class="subscribe-button" value="Renew Subscription">
+                </form>
+            {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="plan" value="annual">
+                <input type="submit" class="subscribe-button" value="Subscribe Now">
+            </form>
+            {% endif %}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="plan">
+            <h3>Free Plan</h3>
+            <p>This plan allows a 7 days free trial</p>
+            <a href="{% url 'alert' %}" class="start-now-button">Start Now</a>
+        </div> -->
+<!-- 
+        <div class="plan">
+            <h3>Monthly Plan</h3>
+            <p>This plan allows you to receive Upwork job alerts for 30 days from subscription date</p>
+            <p>$5/month</p>
+            <a href="https://uptrackr.lemonsqueezy.com/buy/47d5f5f4-eb8d-4872-b460-9800e8c29df8" class="subscribe-button">Subscribe Now</a>
+        </div>
+
+        <div class="plan">
+            <h3>Yearly Plan</h3>
+            <p>This plan allows you to receive Upwork job alerts for 365 days from subscription date</p>
+            <p>$48/year (20% discount)</p>
+            <a href="https://uptrackr.lemonsqueezy.com/buy/a0a4ae4e-aabf-4cb2-b1f5-b1324ebab37b" class="subscribe-button">Subscribe Now</a>
+        </div> -->
+        
+    </div>
+</div>
+
+<style>
+    .plan {
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .plan h3 {
+        font-size: 24px;
+        color: #1DCD8D;
+    }
+
+    .plan p {
+        margin-bottom: 10px;
+    }
+
+    .start-now-button,
+    .subscribe-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #1DCD8D;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .start-now-button:hover,
+    .subscribe-button:hover {
+        background-color: #17a17b;
+    }
+</style>
+{% endblock %}

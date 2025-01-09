@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="section">
+            <form method="post" action="{% url 'signup' %}">
+                {% csrf_token %}
+                {% if message %}
+                <p style="color: red;">{{ message }}</p>
+                {% endif %}
+                <div class="intro-text">
+                    <p>Welcome to Uptrackr – Where Opportunity Knocks, and You're Always First in Line! <br>
+                        Say Farewell to FOMO (Fear of Missing Out) on Upwork Gigs.
+                    </p>
+                </div>
+            
+                <label for="fullname">Full Name:</label><br>
+                <input type="text" id="full_name" name="full_name" placeholder="Full Name..." required><br>
+            
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" placeholder="Username..." required><br>
+
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" placeholder="Email..." required><br>
+
+                <label for="country">Country:</label><br>
+                <select id="country" name="country" required>
+                    <option value="" selected disabled>Select your country</option>
+                    {% for code, name in countries %}
+                    <option value="{{ code }}">{{ name }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" placeholder="Password..." required><br><br>
+
+                <input type="submit" value="Sign Up">
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="{% url 'login' %}">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .container {
+            margin: 0 auto; /* Center the container horizontally */
+            max-width: 600px; /* Limit the maximum width of the container */
+            padding: 0 20px; /* Add padding to the container */
+        }
+    
+        .section {
+            border: 1px solid #ccc; /* Fine line border */
+            border-radius: 20px; /* Smooth edges */
+            padding: 20px; /* Add padding */
+            margin-bottom: 20px; /* Add space between sections */
+            background-color: white; /* Section background color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+    
+        .intro-text {
+            text-align: center; /* Center-align the text */
+            margin-bottom: 20px; /* Add space below the intro text */
+        }
+    
+        /* Style for form labels */
+        label {
+            display: block; /* Display each label on a new line */
+            margin-bottom: 0px; /* Add space between labels */
+            font-weight: bold; /* Make labels bold */
+        }
+    
+        /* Style for form inputs */
+        /* Style for form inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: .5rem 1rem;
+            line-height: 1.5rem;
+            box-sizing: border-box;
+            font-family: 'Nunito', Arial, sans-serif; /* Apply general font family */
+            font-size: 1rem; /* Adjust font size if needed */
+            border-radius: 5px; /* Apply border radius for smooth edges */
+            border: 1px solid #ccc; /* Add border for consistency */
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8rem;
+        }
+
+        /* Style for input fields with errors */
+        input.error,
+        select.error {
+            border: 1px solid red;
+        }
+
+        /* Style for submit button */
+        input[type="submit"] {
+            width: 100%;
+            padding: .5rem 1rem;
+            border-radius: 5px;
+            background-color: #1DCD8D;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Hover effect for submit button */
+        input[type="submit"]:hover {
+            background-color: #17a17b;
+        }
+
+    
+        /* Style for login link */
+        .login-link {
+            text-align: center; /* Center-align the link */
+            margin-top: 20px; /* Add space above the link */
+        }
+    </style>
+    
+{% endblock %}

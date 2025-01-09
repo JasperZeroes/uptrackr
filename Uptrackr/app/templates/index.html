@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Home Page - Uptrackr
+{% endblock %}
+
+{% block content %}
+    <div class="intro-section" style="text-align: center; font-size: 50px; color: #1DCD8D; font-weight: bold; background-color: white; padding: 50px 0; position: relative;">
+        Stay Ahead of the Curve and<br>
+        Never Miss an Opportunity on<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upwork!<br>
+    </div>
+
+    <div class="about-section section" style="background-color: #1a2529; color: white; text-align: center; font-size: 24px; padding: 50px 0; position: relative;">
+        Uptrackr is a remarkable tool that enables you to receive Upwork job notifications <br>
+        directly from your job feed to your mail the moment clients post them. <br>
+        By delivering instant alerts, this tool ensures you stay ahead of 99.9% of freelancers, <br>
+        allowing you to be among the first applicants to submit proposals.<br>
+
+        <a href="{% url 'pricing' %}" class="btn" style="margin-top: 20px;">Get Started For Free</a>
+        <p>** No credit card required</p>
+    </div>
+    
+
+    <div id="how-it-works-section" class="how-it-works-section section" style="background-color: #1a2529; color: white; text-align: center; font-size: 24px; padding: 50px 0; position: relative;">
+        <h2 style="color: #1DCD8D; text-align: center;">How it works</h2>
+        <div style="width: 100%; text-align: center;">
+            <div style="display: inline-block; text-align: left; padding: 10px; border: 1px solid #ccc; border-radius: 10px;">
+                <ol style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">Step 1: Set up your job feed based on your preference</li>
+                    <li style="margin-bottom: 10px;">Step 2: Copy your Upwork RSS URL</li>
+                    <li>Step 3: Paste and Start receiving alerts instantly</li>
+                </ol>
+            </div>
+            
+        </div>
+        <br>
+        <h3 style="text-align: center; color: white;">
+            Watch a simple explainer video below
+        </h3>
+        <video controls width="800" height="500" style="display: block; margin: 0 auto;">
+            <source src="{% static 'videos/explainer_video.mp4' %}" type="video/mp4">
+     
+        </video>
+        <div style="width: 100%; text-align: center;">
+            <a href="{% url 'pricing' %}" class="btn" style="margin-top: 20px;">Get Started For Free</a>
+        </div>
+        <p>** No credit card required</p>
+    </div>
+    
+
+    <div class="contact-us-section section" style="background-color: #050505;">
+        <h2 style="color: white;">Contact Us</h2>
+        <div class="section-content" style="color: white; text-align: center; font-size: 24px;">
+            <!-- <p><img src="{% static '/img/email_logo.PNG' %}" alt="Email Icon" style="vertical-align: middle;">&nbsp;&nbsp;EMAIL</p>
+            <p>jasperobed@gmail.com</p> -->
+            <p>
+                <img 
+                  src="{% static '/img/email_logo.PNG' %}" 
+                  alt="Email Icon" 
+                  style="vertical-align: middle; width: 40px; height: 30px; margin-right: 10px; border-radius: 50%; object-fit: cover;"
+                >
+                EMAIL
+              </p>
+              <p style="color: gray; opacity: 0.7; font-style: italic;">
+                jasperobed@gmail.com
+              </p>
+                            
+            <!-- <p><img src="{% static '/img/facebook_logo.PNG' %}" alt="Facebook Icon" style="vertical-align: middle;">&nbsp;&nbsp;<img src="{% static '/img/linkedin_logo.PNG' %}" alt="Linkedin Icon" style="vertical-align: middle;">&nbsp;&nbsp;<img src="{% static '/img/instagram_logo.PNG' %}" alt="Instagram Icon" style="vertical-align: middle;">&nbsp;&nbsp;SOCIAL</p> -->
+            <p>
+                <img 
+                  src="{% static '/img/facebook_logo.PNG' %}" 
+                  alt="Facebook Icon" 
+                  style="vertical-align: middle; width: 40px; height: 30px; margin-right: 10px; border-radius: 50%; object-fit: cover;"
+                >
+                <img 
+                  src="{% static '/img/linkedin_logo.PNG' %}" 
+                  alt="Linkedin Icon" 
+                  style="vertical-align: middle; width: 40px; height: 30px; margin-right: 10px; border-radius: 50%; object-fit: cover;"
+                >
+                <img 
+                  src="{% static '/img/instagram_logo.PNG' %}" 
+                  alt="Instagram Icon" 
+                  style="vertical-align: middle; width: 40px; height: 30px; margin-right: 10px; border-radius: 50%; object-fit: cover;"
+                >
+                SOCIAL
+              </p>
+              
+        </div>
+    </div>
+
+    <style>
+        .section {
+            border: 1px solid #ccc; /* Fine line border */
+            border-radius: 5px; /* Smooth edges */
+            padding: 20px; /* Add padding */
+            margin-bottom: 0.0px; /* Add space between sections */
+            background-color: white; /* Section background color */
+        }
+        .section:last-child {
+            margin-bottom: 0; /* Remove margin bottom for the last section */
+        }
+        .section h2 {
+            color: #1DCD8D; /* Heading color */
+            text-align: center; /* Center align headings */
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1DCD8D; /* Green color */
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 70px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+    .btn:hover {
+        background-color: #17a17b; /* Darker green color on hover */
+        }
+</style>
+{% endblock %}
